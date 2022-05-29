@@ -11,7 +11,7 @@ class DataService {
 
     static var instance = DataService()
 
-    private(set) var cart = [SelectedProduct]()
+    var cart = [SelectedProduct]()
     
     private(set) var products = [
         Product(name: "Black Leather", price: 59.99, image: "BlackLeather"),

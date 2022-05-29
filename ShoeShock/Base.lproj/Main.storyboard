@@ -107,9 +107,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="ShoeShock Shop" id="tXv-6r-zqd">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="Checkout" id="Ovd-CY-oPc">
+                            <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-5"/>
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <segue destination="QKb-yV-pAh" kind="show" id="PoI-me-g8Q"/>
+                                <segue destination="QKb-yV-pAh" kind="show" id="gH2-Rc-ggu"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -165,6 +166,9 @@
                                                         </label>
                                                         <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="AfM-eE-Abi">
                                                             <rect key="frame" x="38.666666666666657" y="34.333333333333329" width="94" height="32"/>
+                                                            <connections>
+                                                                <action selector="stepperPressed:" destination="Cbt-x9-wCh" eventType="touchUpInside" id="oyP-mr-4Hz"/>
+                                                            </connections>
                                                         </stepper>
                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="rHV-ll-beq">
                                                             <rect key="frame" x="32" y="66.333333333333329" width="107" height="27.333333333333329"/>
@@ -184,7 +188,7 @@
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="a6T-DN-BlR">
-                                                            <rect key="frame" x="10" y="93.666666666666657" width="151" height="27.333333333333329"/>
+                                                            <rect key="frame" x="35.33333333333335" y="93.666666666666657" width="100.66666666666669" height="27.333333333333329"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fzy-dy-QmU">
                                                                     <rect key="frame" x="0.0" y="0.0" width="48.666666666666664" height="27.333333333333332"/>
@@ -192,8 +196,8 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1,000,000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rka-r3-UDw">
-                                                                    <rect key="frame" x="50.66666666666665" y="0.0" width="100.33333333333331" height="27.333333333333332"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rka-r3-UDw">
+                                                                    <rect key="frame" x="50.666666666666657" y="0.0" width="50" height="27.333333333333332"/>
                                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -214,6 +218,7 @@
                                         <connections>
                                             <outlet property="productImage" destination="pXx-7n-oCD" id="Zen-kV-P4o"/>
                                             <outlet property="productNameLabel" destination="6gl-6j-caE" id="YCX-yt-3Oj"/>
+                                            <outlet property="productPriceLabel" destination="Rka-r3-UDw" id="L5X-qC-SYV"/>
                                             <outlet property="productQuantityLabel" destination="2zn-N6-SK6" id="PvF-HP-hr1"/>
                                             <outlet property="quantityStepper" destination="AfM-eE-Abi" id="Ok2-GA-4lo"/>
                                         </connections>

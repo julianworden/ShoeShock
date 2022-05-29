@@ -11,7 +11,7 @@ class ShopViewController: UIViewController, UICollectionViewDataSource, UICollec
 
     @IBOutlet weak var productCollectionView: UICollectionView!
 
-    let dataService = DataService.instance
+    var dataService = DataService.instance
     private(set) var cellReuseID = "ShopProductCell"
 
     override func viewDidLoad() {
@@ -36,7 +36,5 @@ class ShopViewController: UIViewController, UICollectionViewDataSource, UICollec
             return ShopProductCollectionViewCell()
         }
     }
-
-
 }
 

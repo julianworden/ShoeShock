@@ -13,7 +13,7 @@ class CartViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     private(set) var cellReuseID = "CartProductCell"
 
-    let dataService = DataService.instance
+    var dataService = DataService.instance
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,7 @@ class CartViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID, for: indexPath) as? CartProductTableViewCell {
-            cell.selectedProduct = dataService.cart[indexPath.row]
+            cell.update(with: dataService.cart[indexPath.row])
             return cell
         } else {
             return CartProductTableViewCell()
