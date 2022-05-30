@@ -9,8 +9,12 @@ import UIKit
 
 class CartViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    @IBOutlet var cartTableView: UITableView!
+    // TRY PUTTING STEPPER FUNCTIONALITY IN THIS FILE INSTEAD OF THE CELL FILE!!
+    // ALSO UPDATE DATASERVICE.CART HERE INSTEAD OF FROM WITHIN THE CELL!!
 
+    @IBOutlet var cartTableView: UITableView!
+    @IBOutlet weak var cartTotalLabel: UILabel!
+    
     private(set) var cellReuseID = "CartProductCell"
 
     var dataService = DataService.instance
@@ -28,11 +32,29 @@ class CartViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID, for: indexPath) as? CartProductTableViewCell {
-            cell.update(with: dataService.cart[indexPath.row])
+            let cartProduct = dataService.cart[indexPath.row]
+
+            cell.delegate = self
+            cell.update(with: cartProduct)
+            cell.selectedProduct = cartProduct
             return cell
         } else {
             return CartProductTableViewCell()
         }
     }
 
+    @IBSegueAction func showPurchaseCompleteViewController(_ coder: NSCoder) -> PurchaseCompleteViewController? {
+        return PurchaseCompleteViewController(coder: coder)
+    }
+}
+
+extension CartViewController: CartProductTableViewCellDelegate {
+    func removeRowWithZeroQuantityAt(rowNumber: Int) {
+        let cartProductIndexPath = IndexPath(item: rowNumber, section: 0)
+        cartTableView.deleteRows(at: [cartProductIndexPath], with: .automatic)
+    }
+
+    func sendNewTotalToViewController(total: Double) {
+        cartTotalLabel.text = "Cart Total: $\(total)"
+    }
 }

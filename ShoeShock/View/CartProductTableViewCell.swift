@@ -5,7 +5,13 @@
 //  Created by Julian Worden on 5/28/22.
 //
 
+
 import UIKit
+
+protocol CartProductTableViewCellDelegate {
+    func removeRowWithZeroQuantityAt(rowNumber: Int)
+    func sendNewTotalToViewController(total: Double)
+}
 
 class CartProductTableViewCell: UITableViewCell {
 
@@ -18,6 +24,8 @@ class CartProductTableViewCell: UITableViewCell {
     let dataService = DataService.instance
 
     var selectedProduct: SelectedProduct!
+
+    var delegate: CartProductTableViewCellDelegate!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,13 +46,33 @@ class CartProductTableViewCell: UITableViewCell {
     }
 
     func updateProductQuantityAndPrice() {
-        selectedProduct.changeQuantity(to: Int(quantityStepper.value))
-        productQuantityLabel.text = String(Int(quantityStepper.value))
-        productPriceLabel.text = String(selectedProduct.totalPrice)
+        guard var selectedProduct = selectedProduct else { return }
 
-        if let selectedProductIndexPosition = dataService.cart.firstIndex(of: selectedProduct) {
-            dataService.cart[selectedProductIndexPosition].changeQuantity(to: selectedProduct.quantity)
-            print(dataService.cart[selectedProductIndexPosition])
+        productQuantityLabel.text = String(Int(quantityStepper.value))
+        selectedProduct.changeQuantity(to: Int(quantityStepper.value))
+        productPriceLabel.text = "$\(selectedProduct.totalPrice)"
+
+        if selectedProduct.quantity < 1 {
+            if let updatedProductRowNumber = dataService.cart.firstIndex(of: selectedProduct) {
+                dataService.cart.remove(at: updatedProductRowNumber)
+                delegate.removeRowWithZeroQuantityAt(rowNumber: updatedProductRowNumber)
+            }
         }
+
+        if let updatedProductIndexPosition = dataService.cart.firstIndex(of: selectedProduct) {
+            dataService.cart[updatedProductIndexPosition] = selectedProduct
+        }
+
+        calculateTotalCartPrice()
+    }
+
+    func calculateTotalCartPrice() {
+        var cartTotal = 0.0
+
+        for product in dataService.cart {
+            cartTotal += product.totalPrice
+        }
+
+        delegate.sendNewTotalToViewController(total: cartTotal)
     }
 }

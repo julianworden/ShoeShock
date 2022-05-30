@@ -23,7 +23,6 @@ class ShopViewController: UIViewController, UICollectionViewDataSource, UICollec
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         dataService.products.count
-
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -36,5 +35,7 @@ class ShopViewController: UIViewController, UICollectionViewDataSource, UICollec
             return ShopProductCollectionViewCell()
         }
     }
+
+    
 }
 

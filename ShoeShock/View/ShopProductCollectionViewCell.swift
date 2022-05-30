@@ -23,7 +23,7 @@ class ShopProductCollectionViewCell: UICollectionViewCell {
 
     func update(with product: Product) {
         productNameLabel.text = product.name
-        productPriceLabel.text = String(product.price)
+        productPriceLabel.text = "$\(product.price)"
         productImage.image = UIImage(named: product.image)
     }
 
@@ -32,6 +32,11 @@ class ShopProductCollectionViewCell: UICollectionViewCell {
 
     @IBAction func addProductToCart(_ sender: Any?) {
         let selectedProduct = SelectedProduct(product: product, quantity: 1)
-        dataService.addSelectedProductToCart(selectedProduct: selectedProduct)
+
+        if let selectedProductIndexPosition = dataService.cart.firstIndex(of: selectedProduct) {
+            dataService.cart[selectedProductIndexPosition].changeQuantity(to: selectedProduct.quantity + 1)
+        } else {
+            dataService.addSelectedProductToCart(selectedProduct: selectedProduct)
+        }
     }
 }
