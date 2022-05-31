@@ -10,7 +10,7 @@ import UIKit
 
 protocol CartProductTableViewCellDelegate {
     func removeRowWithZeroQuantityAt(rowNumber: Int)
-    func sendNewTotalToViewController(total: Double)
+    func updateNewCartTotal()
 }
 
 class CartProductTableViewCell: UITableViewCell {
@@ -63,16 +63,6 @@ class CartProductTableViewCell: UITableViewCell {
             dataService.cart[updatedProductIndexPosition] = selectedProduct
         }
 
-        calculateTotalCartPrice()
-    }
-
-    func calculateTotalCartPrice() {
-        var cartTotal = 0.0
-
-        for product in dataService.cart {
-            cartTotal += product.totalPrice
-        }
-
-        delegate.sendNewTotalToViewController(total: cartTotal)
+        delegate.updateNewCartTotal()
     }
 }

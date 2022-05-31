@@ -230,45 +230,56 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="M1R-si-JEJ">
-                                <rect key="frame" x="81.666666666666686" y="718" width="227" height="76.333333333333371"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eOf-9c-87H">
+                                <rect key="frame" x="75.333333333333329" y="718" width="239.66666666666669" height="27.333333333333371"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cart Total: $9,901,999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cji-ze-Qts">
-                                        <rect key="frame" x="0.0" y="0.0" width="227" height="27.333333333333332"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Purchase Total: $" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uuN-Hf-bpa">
+                                        <rect key="frame" x="0.0" y="0.0" width="150.66666666666666" height="27.333333333333332"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KRq-YL-AHL">
-                                        <rect key="frame" x="0.0" y="35.333333333333371" width="227" height="41"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Complete Purchase">
-                                            <backgroundConfiguration key="background">
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </backgroundConfiguration>
-                                            <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="23"/>
-                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <segue destination="zQz-a6-rhn" kind="show" destinationCreationSelector="showPurchaseCompleteViewController:" id="UY5-LU-VkT"/>
-                                        </connections>
-                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9,901,999" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DTv-xY-mPi">
+                                        <rect key="frame" x="150.66666666666669" y="0.0" width="89" height="27.333333333333332"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KRq-YL-AHL">
+                                <rect key="frame" x="75" y="755.33333333333337" width="240" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="239.66999999999999" id="4kG-Ux-K7U"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Complete Purchase">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </backgroundConfiguration>
+                                    <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="23"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="zQz-a6-rhn" kind="show" destinationCreationSelector="showPurchaseCompleteViewController:" id="UY5-LU-VkT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="M1R-si-JEJ" firstAttribute="centerX" secondItem="KMn-Nf-9T8" secondAttribute="centerX" id="TQC-vh-SJB"/>
+                            <constraint firstItem="eOf-9c-87H" firstAttribute="centerX" secondItem="KMn-Nf-9T8" secondAttribute="centerX" id="1NS-fY-DUj"/>
+                            <constraint firstItem="KRq-YL-AHL" firstAttribute="centerX" secondItem="KMn-Nf-9T8" secondAttribute="centerX" id="M0Z-z2-Ad0"/>
+                            <constraint firstItem="KRq-YL-AHL" firstAttribute="top" secondItem="eOf-9c-87H" secondAttribute="bottom" constant="10" id="Qwv-mY-NHN"/>
                             <constraint firstItem="hk1-E1-1lp" firstAttribute="top" secondItem="Eff-HW-opp" secondAttribute="bottom" id="Z4u-lt-qOF"/>
                             <constraint firstItem="hk1-E1-1lp" firstAttribute="leading" secondItem="KMn-Nf-9T8" secondAttribute="leading" id="dog-l0-5bj"/>
-                            <constraint firstItem="M1R-si-JEJ" firstAttribute="top" secondItem="hk1-E1-1lp" secondAttribute="bottom" constant="30" id="edp-2Y-tqN"/>
+                            <constraint firstItem="eOf-9c-87H" firstAttribute="top" secondItem="hk1-E1-1lp" secondAttribute="bottom" constant="30" id="iXe-fk-sdy"/>
                             <constraint firstAttribute="trailing" secondItem="hk1-E1-1lp" secondAttribute="trailing" id="uSE-Nu-2TU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bmk-Yh-g1R"/>
                     <connections>
                         <outlet property="cartTableView" destination="hk1-E1-1lp" id="n5M-Lh-oBa"/>
-                        <outlet property="cartTotalLabel" destination="cji-ze-Qts" id="zia-Wt-acX"/>
+                        <outlet property="cartTotalLabel" destination="DTv-xY-mPi" id="oBC-38-0ww"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PlR-cD-vIp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -288,10 +299,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="C77-8M-93n">
-                                <rect key="frame" x="0.0" y="162.66666666666663" width="390" height="654"/>
+                                <rect key="frame" x="0.0" y="162.66666666666663" width="390" height="525"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="654" id="OIw-ha-Gxn"/>
+                                    <constraint firstAttribute="height" constant="525" id="OIw-ha-Gxn"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PurchaseCompletedCell" rowHeight="106" id="yKp-Xh-7o8" customClass="PurchaseCompletedTableViewCell" customModule="ShoeShock" customModuleProvider="target">
@@ -353,18 +364,38 @@ The following order has been placed:</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rwd-Lz-4Gz">
+                                <rect key="frame" x="75.333333333333329" y="717.66666666666663" width="239.66666666666669" height="27.333333333333371"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Purchase Total: $" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uua-hU-s9o">
+                                        <rect key="frame" x="0.0" y="0.0" width="150.66666666666666" height="27.333333333333332"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9,901,999" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s2X-Y1-bEa">
+                                        <rect key="frame" x="150.66666666666669" y="0.0" width="89" height="27.333333333333332"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="rwd-Lz-4Gz" firstAttribute="top" secondItem="C77-8M-93n" secondAttribute="bottom" constant="30" id="9gC-DT-ojp"/>
                             <constraint firstItem="C77-8M-93n" firstAttribute="top" secondItem="Rt1-Jg-tfQ" secondAttribute="bottom" constant="20" id="JNs-GS-o26"/>
                             <constraint firstItem="Rt1-Jg-tfQ" firstAttribute="top" secondItem="caG-be-1CN" secondAttribute="bottom" id="R9U-Uc-gHY"/>
                             <constraint firstAttribute="trailing" secondItem="C77-8M-93n" secondAttribute="trailing" id="hhK-Py-mTh"/>
                             <constraint firstItem="Rt1-Jg-tfQ" firstAttribute="centerX" secondItem="DCC-UF-2sv" secondAttribute="centerX" id="nNr-wa-AVe"/>
+                            <constraint firstItem="rwd-Lz-4Gz" firstAttribute="centerX" secondItem="DCC-UF-2sv" secondAttribute="centerX" id="qSb-Xh-JL0"/>
                             <constraint firstItem="C77-8M-93n" firstAttribute="leading" secondItem="DCC-UF-2sv" secondAttribute="leading" id="zL9-GE-ANo"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="47e-KS-cz8"/>
                     <connections>
+                        <outlet property="cartTotalLabel" destination="s2X-Y1-bEa" id="0SA-Cl-gUw"/>
                         <outlet property="purchaseCompletedTableView" destination="C77-8M-93n" id="4Yw-Ix-w6F"/>
                     </connections>
                 </viewController>

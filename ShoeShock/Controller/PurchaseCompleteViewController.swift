@@ -10,20 +10,23 @@ import UIKit
 class PurchaseCompleteViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var purchaseCompletedTableView: UITableView!
+    @IBOutlet weak var cartTotalLabel: UILabel!
 
     var dataService = DataService.instance
 
     private(set) var cellReuseID = "PurchaseCompletedCell"
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         purchaseCompletedTableView.dataSource = self
         purchaseCompletedTableView.delegate = self
-    }
 
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        cartTotalLabel.text = String(dataService.cartTotal)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

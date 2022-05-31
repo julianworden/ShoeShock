@@ -24,6 +24,8 @@ class CartViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
         cartTableView.dataSource = self
         cartTableView.delegate = self
+
+        cartTotalLabel.text = String(dataService.cartTotal)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -54,7 +56,7 @@ extension CartViewController: CartProductTableViewCellDelegate {
         cartTableView.deleteRows(at: [cartProductIndexPath], with: .automatic)
     }
 
-    func sendNewTotalToViewController(total: Double) {
-        cartTotalLabel.text = "Cart Total: $\(total)"
+    func updateNewCartTotal() {
+        cartTotalLabel.text = String(dataService.cartTotal)
     }
 }

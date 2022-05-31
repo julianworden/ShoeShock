@@ -21,6 +21,16 @@ class DataService {
         Product(name: "Light Blue Sneaks", price: 49.99, image: "LightBlueSneaks")
     ]
 
+    var cartTotal: Double {
+        var cartTotal = 0.0
+
+        for selectedProduct in cart {
+            cartTotal += selectedProduct.totalPrice
+        }
+
+        return cartTotal
+    }
+
     func addSelectedProductToCart(selectedProduct: SelectedProduct) {
         cart.append(selectedProduct)
     }
