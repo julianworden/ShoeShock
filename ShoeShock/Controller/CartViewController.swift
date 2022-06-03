@@ -14,7 +14,8 @@ class CartViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     @IBOutlet var cartTableView: UITableView!
     @IBOutlet weak var cartTotalLabel: UILabel!
-    
+    @IBOutlet weak var completePurchaseButton: RoundedBlackButton!
+
     private(set) var cellReuseID = "CartProductCell"
 
     var dataService = DataService.instance
@@ -24,8 +25,6 @@ class CartViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
         cartTableView.dataSource = self
         cartTableView.delegate = self
-
-        cartTotalLabel.text = String(dataService.cartTotal)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -57,6 +56,6 @@ extension CartViewController: CartProductTableViewCellDelegate {
     }
 
     func updateNewCartTotal() {
-        cartTotalLabel.text = String(dataService.cartTotal)
+        cartTotalLabel.text = String(dataService.cartTotal.formatted())
     }
 }

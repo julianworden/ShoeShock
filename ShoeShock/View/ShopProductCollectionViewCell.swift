@@ -27,16 +27,9 @@ class ShopProductCollectionViewCell: UICollectionViewCell {
         productImage.image = UIImage(named: product.image)
     }
 
-    // Should this @IBAction function go in the ShopViewController somehow?
-    // Or is it all right to put it in the ShopProductCollectionViewCell like this?
-
     @IBAction func addProductToCart(_ sender: Any?) {
         let selectedProduct = SelectedProduct(product: product, quantity: 1)
-
-        if let selectedProductIndexPosition = dataService.cart.firstIndex(of: selectedProduct) {
-            dataService.cart[selectedProductIndexPosition].changeQuantity(to: selectedProduct.quantity + 1)
-        } else {
-            dataService.addSelectedProductToCart(selectedProduct: selectedProduct)
-        }
+        guard !dataService.cart.contains(selectedProduct) else { return }
+        dataService.addSelectedProductToCart(selectedProduct: selectedProduct)
     }
 }

@@ -8,6 +8,15 @@
 
 import UIKit
 
+// This is the first time I've ever used
+// a delegate like this, and I'd appreciate
+// some input on how I did! Not sure if there
+// is a better way to integrate this functionality,
+// or if it makes sense to use a delegate here.
+// Also, I feel like I have too much logic
+// in this view overall and that it should be
+// split up elsewhere? Thoughts?
+
 protocol CartProductTableViewCellDelegate {
     func removeRowWithZeroQuantityAt(rowNumber: Int)
     func updateNewCartTotal()
@@ -22,15 +31,18 @@ class CartProductTableViewCell: UITableViewCell {
     @IBOutlet weak var quantityStepper: UIStepper!
 
     let dataService = DataService.instance
+    var delegate: CartProductTableViewCellDelegate!
 
     var selectedProduct: SelectedProduct!
-
-    var delegate: CartProductTableViewCellDelegate!
 
     override func awakeFromNib() {
         super.awakeFromNib()
 
         quantityStepper.value = 1
+    }
+
+    @IBAction func stepperPressed(_ sender: Any) {
+        updateProductQuantityAndPrice()
     }
 
     func update(with selectedProduct: SelectedProduct) {
@@ -41,26 +53,21 @@ class CartProductTableViewCell: UITableViewCell {
         updateProductQuantityAndPrice()
     }
 
-    @IBAction func stepperPressed(_ sender: Any) {
-        updateProductQuantityAndPrice()
-    }
-
     func updateProductQuantityAndPrice() {
-        guard var selectedProduct = selectedProduct else { return }
-
+        
         productQuantityLabel.text = String(Int(quantityStepper.value))
         selectedProduct.changeQuantity(to: Int(quantityStepper.value))
-        productPriceLabel.text = "$\(selectedProduct.totalPrice)"
+        productPriceLabel.text = "$\(selectedProduct.totalPrice.formatted())"
 
         if selectedProduct.quantity < 1 {
             if let updatedProductRowNumber = dataService.cart.firstIndex(of: selectedProduct) {
                 dataService.cart.remove(at: updatedProductRowNumber)
                 delegate.removeRowWithZeroQuantityAt(rowNumber: updatedProductRowNumber)
             }
-        }
-
-        if let updatedProductIndexPosition = dataService.cart.firstIndex(of: selectedProduct) {
-            dataService.cart[updatedProductIndexPosition] = selectedProduct
+        } else {
+            if let updatedProductIndexPosition = dataService.cart.firstIndex(of: selectedProduct) {
+                dataService.cart[updatedProductIndexPosition] = selectedProduct
+            }
         }
 
         delegate.updateNewCartTotal()

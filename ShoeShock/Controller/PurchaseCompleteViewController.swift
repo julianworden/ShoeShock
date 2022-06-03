@@ -11,6 +11,8 @@ class PurchaseCompleteViewController: UIViewController, UITableViewDataSource, U
 
     @IBOutlet weak var purchaseCompletedTableView: UITableView!
     @IBOutlet weak var cartTotalLabel: UILabel!
+    @IBOutlet weak var purchaseTotalTextLabel: UILabel!
+    @IBOutlet weak var thankYouLabel: UILabel!
 
     var dataService = DataService.instance
 
@@ -26,6 +28,8 @@ class PurchaseCompleteViewController: UIViewController, UITableViewDataSource, U
         purchaseCompletedTableView.dataSource = self
         purchaseCompletedTableView.delegate = self
 
+        setMessageText()
+
         cartTotalLabel.text = String(dataService.cartTotal)
     }
 
@@ -39,6 +43,16 @@ class PurchaseCompleteViewController: UIViewController, UITableViewDataSource, U
             return cell
         } else {
             return PurchaseCompletedTableViewCell()
+        }
+    }
+
+    func setMessageText() {
+        if dataService.cart.isEmpty {
+            thankYouLabel.text = "Invalid order, your cart is empty!"
+            cartTotalLabel.isHidden = true
+            purchaseTotalTextLabel.isHidden = true
+        } else {
+            thankYouLabel.text = "Thank you for your purchase! The following order has been placed:"
         }
     }
 

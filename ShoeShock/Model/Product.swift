@@ -11,4 +11,5 @@ struct Product {
     private(set) var name: String
     private(set) var price: Double
     private(set) var image: String
+    private(set) var details: String
 }

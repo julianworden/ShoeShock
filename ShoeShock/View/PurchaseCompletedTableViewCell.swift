@@ -20,17 +20,9 @@ class PurchaseCompletedTableViewCell: UITableViewCell {
     }
 
     func update(with selectedProduct: SelectedProduct) {
-        print("THE CART IS AS FOLLOWS")
         productName.text = selectedProduct.product.name
         productPrice.text = "Price: $\(selectedProduct.totalPrice)"
         productQuantity.text = "Quantity: \(selectedProduct.quantity)"
-
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }
